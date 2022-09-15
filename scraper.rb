@@ -11,10 +11,6 @@ top_words = words.first(25)
 
 hash = Hash.new(0)
 
-words.each do |el|
-    if top_words.include?(el)
-        hash[el] +=1
-    end
-end
+words.each_with_object({}) { |el| hash[el] +=1 if top_words.include?(el) }
 
 puts hash
